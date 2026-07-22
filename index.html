@@ -15,7 +15,7 @@
     --ink-deep:#081C38;
     --bronze:#9C7A3C;
     --bronze-light:#C9AE7C;
-    --paper:#FBF8F1;
+    --paper:#FFFDF9;
     --paper-2:#F3EEE1;
     --text:#2A2A2A;
     --muted:#746B5D;
@@ -48,6 +48,24 @@
       linear-gradient(160deg, var(--ink) 0%, var(--ink-deep) 100%);
     overflow:hidden;
   }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    top:14px; left:14px; right:14px; bottom:24px;
+    border:1px solid rgba(201,174,124,.45);
+    pointer-events:none;
+  }
+  .corner-vein{
+    position:absolute;
+    width:46px;
+    height:46px;
+    color:rgba(201,174,124,.55);
+    pointer-events:none;
+  }
+  .corner-vein.tl{top:14px; left:14px;}
+  .corner-vein.tr{top:14px; right:14px; transform:scaleX(-1);}
+  .corner-vein.bl{bottom:24px; left:14px; transform:scaleY(-1);}
+  .corner-vein.br{bottom:24px; right:14px; transform:scale(-1,-1);}
   header.hero::after{
     content:"";
     position:absolute;
@@ -141,9 +159,9 @@
     background:var(--ink);
     color:#fff;
   }
-  .cat-dot{
-    width:7px;height:7px;border-radius:50%;
-    display:inline-block;flex:none;margin-right:8px;
+  .cat-pill-icon{
+    width:16px;height:16px;
+    flex:none;margin-right:7px;
   }
 
   /* ---------- Sections ---------- */
@@ -153,23 +171,33 @@
     scroll-margin-top:var(--sticky-h, 112px);
   }
   .cat-head{
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-    margin-bottom:14px;
+    margin-bottom:16px;
   }
   .cat-head h2{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:225px;
+    max-width:100%;
+    text-align:center;
     font-family:'Fraunces',serif;
     font-weight:600;
-    font-size:23px;
-    letter-spacing:.04em;
+    font-size:15px;
+    letter-spacing:.06em;
     text-transform:uppercase;
-    color:var(--ink);
+    color:#fff;
     margin:0;
+    padding:8px 14px;
+    border-radius:999px;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+    box-sizing:border-box;
   }
-  .cat-head .rule{
-    flex:1;
-    height:1px;
+  .cat-icon{
+    width:18px;
+    height:18px;
+    flex:none;
+    color:#fff;
   }
 
   .item{padding:12px 0 12px 14px;border-bottom:1px dotted var(--line);border-left:3px solid transparent;}
@@ -190,7 +218,7 @@
     font-family:'Inter',sans-serif;
     font-weight:600;
     font-size:15px;
-    color:var(--bronze);
+    color:var(--item-price-color, var(--bronze));
     white-space:nowrap;
   }
   .item-desc{
@@ -208,6 +236,7 @@
     padding:10px 12px;
     background:var(--paper-2);
     border-radius:10px;
+    border-left:3px solid var(--muted);
   }
 
   .no-results{
@@ -238,6 +267,12 @@
     background:linear-gradient(to top, transparent, var(--paper));
     pointer-events:none;
   }
+  footer .frame-box{
+    position:absolute;
+    top:24px; left:14px; right:14px; bottom:14px;
+    border:1px solid rgba(201,174,124,.45);
+    pointer-events:none;
+  }
   footer .ornament{margin-bottom:14px;color:var(--bronze-light);}
   footer .contact{
     font-family:'Inter',sans-serif;
@@ -265,6 +300,10 @@
 
 <div class="app">
   <header class="hero">
+    <svg class="corner-vein tl" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 20 L2 2 L20 2"/><circle cx="9" cy="9" r="3.5"/></svg>
+    <svg class="corner-vein tr" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 20 L2 2 L20 2"/><circle cx="9" cy="9" r="3.5"/></svg>
+    <svg class="corner-vein bl" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 20 L2 2 L20 2"/><circle cx="9" cy="9" r="3.5"/></svg>
+    <svg class="corner-vein br" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 20 L2 2 L20 2"/><circle cx="9" cy="9" r="3.5"/></svg>
     <div class="eyebrow">Punto Ristoro</div>
     <h1 class="brand">In Villa</h1>
     <div class="ornament">❖</div>
@@ -286,6 +325,11 @@
   <p class="no-results" id="noResults">Nessun risultato per questa ricerca.</p>
 
   <footer>
+    <div class="frame-box"></div>
+    <svg class="corner-vein tl" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.4" style="top:24px;"><path d="M2 20 L2 2 L20 2"/><circle cx="9" cy="9" r="3.5"/></svg>
+    <svg class="corner-vein tr" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.4" style="top:24px;"><path d="M2 20 L2 2 L20 2"/><circle cx="9" cy="9" r="3.5"/></svg>
+    <svg class="corner-vein bl" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.4" style="bottom:14px;"><path d="M2 20 L2 2 L20 2"/><circle cx="9" cy="9" r="3.5"/></svg>
+    <svg class="corner-vein br" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.4" style="bottom:14px;"><path d="M2 20 L2 2 L20 2"/><circle cx="9" cy="9" r="3.5"/></svg>
     <div class="ornament">❖</div>
     <a class="contact" href="tel:+393290857561">Info e Prenotazioni: +39 329 085 7561</a>
     <div class="sub">MENÙ SOGGETTO A VARIAZIONI STAGIONALI</div>
@@ -293,8 +337,23 @@
 </div>
 
 <script>
+const ICONS = {
+  pizza: '<path d="M4 4 L28 8 Q25 20 15 26 Q6 20 4 4 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="13" cy="11" r="1.7" fill="currentColor"/><circle cx="19.5" cy="15" r="1.5" fill="currentColor"/><circle cx="12" cy="18.5" r="1.4" fill="currentColor"/>',
+  patatine: '<path d="M8 13 L24 13 L21 27 L11 27 Z" fill="currentColor"/><rect x="9" y="4" width="3" height="12" rx="1.5"/><rect x="14.5" y="1.5" width="3" height="14.5" rx="1.5"/><rect x="20" y="4" width="3" height="12" rx="1.5"/>',
+  kebab: '<g transform="rotate(-24 16 16)"><rect x="3" y="11" width="26" height="10" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 13 Q0 16 3 19" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M29 13 Q32 16 29 19" fill="none" stroke="currentColor" stroke-width="1.6"/></g>',
+  vino: '<path d="M10 4 L22 4 L17 16 L15 16 Z"/><rect x="15" y="16" width="2" height="8"/><rect x="10" y="24" width="12" height="2.4" rx="1"/>',
+  panini: '<rect x="4" y="11" width="24" height="10" rx="5"/><path d="M6 15 L10 12 L14 15 L18 12 L22 15 L26 12" fill="none" stroke="#B5541F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  aperitivi: '<path d="M6 5 L26 5 L16 16 Z"/><rect x="15" y="16" width="2" height="8"/><rect x="10" y="24" width="12" height="2.4" rx="1"/>',
+  bibite: '<path d="M8 7 L24 7 L21 26 L11 26 Z"/><line x1="19" y1="1" x2="15" y2="12" stroke="currentColor" stroke-width="1.8"/>',
+  birre: '<rect x="6" y="8" width="14" height="18" rx="2"/><path d="M20 12 Q27 12 27 18 Q27 24 20 22" fill="none" stroke="currentColor" stroke-width="2"/><rect x="6" y="4" width="14" height="4"/>',
+  creme: '<path d="M6 12 A8 8 0 0 0 22 12 Z"/><rect x="6" y="9" width="16" height="3"/><path d="M20 11 Q26 11 26 16 Q26 21 20 20" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="10" y1="6" x2="9" y2="2" stroke="currentColor" stroke-width="1.4"/><line x1="14" y1="6" x2="13" y2="2" stroke="currentColor" stroke-width="1.4"/>',
+  amari: '<rect x="12" y="3" width="4" height="6"/><path d="M12 9 L16 9 L20 15 L20 26 L8 26 L8 15 Z"/>',
+  grappa: '<path d="M9 4 L19 4 L18 13 L15 16 L15 21 L13 21 L13 16 L10 13 Z"/><rect x="11" y="21" width="6" height="2.2" rx="1"/>',
+  gelati: '<path d="M9 13 L19 13 L14 27 Z"/><circle cx="14" cy="9" r="7"/>',
+};
+
 const DATA = [
-  { id:"pizza", title:"Pizza", color:"#B1502F", items:[
+  { id:"pizza", title:"Pizza", color:"#D64545", items:[
     ["Margherita","pomodoro, fior di latte","6,00"],
     ["Marinara","pomodoro, aglio, origano, olio","5,00"],
     ["Napoli","pomodoro, fior di latte, origano, acciughe","7,00"],
@@ -316,23 +375,23 @@ const DATA = [
     ["Crudo e Stracciatella","pomodoro, prosciutto crudo, stracciatella di bufala a crudo","8,00"],
     ["Stracciatella e Basilico","pomodoro, stracciatella di bufala a crudo, basilico fresco, olio EVO","7,00"],
   ], note:"Possibili aggiunte: pomodorini, prosciutto crudo, patatine, grana — il prezzo può variare in base alle aggiunte." },
-  { id:"patatine", title:"Patatine Fritte", color:"#BB8A2E", items:[
+  { id:"patatine", title:"Patatine Fritte", color:"#E8A33D", items:[
     ["Vaschetta piccola","","2,50"],["Vaschetta grande","","3,00"],
     ["Piatto grande","","6,00"],["Vaschetta würstel e patatine","","4,00"],
   ]},
-  { id:"kebab", title:"Roll Kebab", color:"#A85C2C", items:[
+  { id:"kebab", title:"Roll Kebab", color:"#B5541F", items:[
     ["Roll Kebab","kebab, pomodoro, lattuga, cipolla, maionese, ketchup","7,00"],
   ], note:"Aggiunta patatine: +1,00 €" },
-  { id:"vino", title:"Vino", color:"#7A2E3E", items:[
+  { id:"vino", title:"Vino", color:"#7D2E68", items:[
     ["Bianco / Rosso / Rosato","bottiglia cl. 75","15,00"],
   ]},
-  { id:"panini", title:"Panini", color:"#A67C29", items:[
+  { id:"panini", title:"Panini", color:"#DB7F2E", items:[
     ["Salsiccia","maionese, ketchup, cipolla, peperoni","6,00"],
     ["Hamburger","maionese, ketchup, insalata, pomodoro, cheddar","6,00"],
     ["Hot Dog","würstel, maionese, ketchup","4,00"],
     ["Kebab","maionese, ketchup, insalata, pomodoro, cipolla","6,00"],
   ]},
-  { id:"aperitivi", title:"Aperitivi", color:"#C1633F", items:[
+  { id:"aperitivi", title:"Aperitivi", color:"#E8622F", items:[
     ["Aperol Spritz","","6,00"],["Campari Spritz","","6,00"],["Campari","","2,50"],["Nano","","2,00"],["Campari Gin","","3,00"],
     ["Crodino","","2,50"],["Crodino Corretto","","3,00"],
     ["Bitter Rosso / Bianco","","2,50"],["Bitter Corretto","","3,00"],
@@ -340,13 +399,13 @@ const DATA = [
     ["Calice di Prosecco","","2,50"],["Martini","","2,50"],
     ["Gin Tonic / Martini & Gin","","4,00"],["Cocktail","","6,00"],
   ]},
-  { id:"bibite", title:"Bibite", color:"#3F7566", items:[
+  { id:"bibite", title:"Bibite", color:"#2E9DB0", items:[
     ["Coca Cola, Fanta, Sprite","","2,00"],["Tè pesca / limone (lattina)","","2,00"],
     ["Tè pesca / limone (bric)","","1,00"],["Tè pesca / limone (bottiglia)","","2,50"],
     ["Brasilena / Gassosa / Bergamotto","","2,00"],["Monster / Red Bull","","3,00"],
     ["Succhi di frutta (a scelta)","","2,00"],
   ]},
-  { id:"birre", title:"Birre", color:"#B08A2E", items:[
+  { id:"birre", title:"Birre", color:"#C99A2E", items:[
     ["Beck's","cl 33","3,50"],["Blonde Leffe","cl 33","4,00"],["Blonde Leffe","cl 75","7,00"],
     ["Ceres","cl 33","3,50"],["Corona","cl 33","3,50"],["Heineken","cl 33","2,50"],
     ["Nastro Azzurro","cl 33","2,50"],["Tennent's Super","cl 33","3,50"],["Raffo","cl 33","2,50"],
@@ -357,16 +416,16 @@ const DATA = [
     ["Birra alla spina Tuborg","piccola · cl 30","3,00"],["Birra alla spina Tuborg","media · cl 40","4,00"],
     ["Birra alla spina Tuborg","grande · cl 50","5,00"],
   ]},
-  { id:"creme", title:"Creme", color:"#A9727A", items:[
+  { id:"creme", title:"Creme", color:"#C87B9A", items:[
     ["Caffè / Nocciola","","2,00"],["Granita al Limone","","2,50"],
   ]},
-  { id:"amari", title:"Amari e Distillati", color:"#5B4230", items:[
+  { id:"amari", title:"Amari e Distillati", color:"#8A5A3B", items:[
     ["Amaro","","2,50"],["Whisky","","3,00"],["Jefferson","","3,00"],["Baileys","","3,00"],
   ]},
-  { id:"grappa", title:"Grappa", color:"#4F5C6B", items:[
+  { id:"grappa", title:"Grappa", color:"#4C6B8A", items:[
     ["Classica","","2,00"],["Barricata","","2,50"],
   ]},
-  { id:"gelati", title:"Gelati", color:"#5C8A6B", items:[], note:"Confezionati, da scegliere al banco." },
+  { id:"gelati", title:"Gelati", color:"#4FA8A0", items:[], note:"Confezionati, da scegliere al banco." },
 ];
 
 const main = document.getElementById('main');
@@ -387,7 +446,8 @@ function escapeHtml(s){
 DATA.forEach(cat => {
   const pill = document.createElement('button');
   pill.className = 'cat-pill';
-  pill.innerHTML = `<span class="cat-dot" style="background:${cat.color}"></span>${escapeHtml(cat.title)}`;
+  const navIconSvg = ICONS[cat.id] ? `<svg class="cat-pill-icon" viewBox="0 0 32 32" fill="currentColor" style="color:${cat.color}">${ICONS[cat.id]}</svg>` : '';
+  pill.innerHTML = `${navIconSvg}${escapeHtml(cat.title)}`;
   pill.dataset.target = cat.id;
   pill.addEventListener('click', () => {
     document.getElementById('sec-' + cat.id).scrollIntoView({behavior:'smooth', block:'start'});
@@ -400,7 +460,8 @@ DATA.forEach(cat => {
 
   const head = document.createElement('div');
   head.className = 'cat-head';
-  head.innerHTML = `<h2>${escapeHtml(cat.title)}</h2><div class="rule" style="background:linear-gradient(to right, ${cat.color}, transparent)"></div>`;
+  const iconSvg = ICONS[cat.id] ? `<svg class="cat-icon" viewBox="0 0 32 32" fill="currentColor">${ICONS[cat.id]}</svg>` : '';
+  head.innerHTML = `<h2 style="background:${cat.color}">${iconSvg}<span>${escapeHtml(cat.title)}</span></h2>`;
   sec.appendChild(head);
 
   cat.items.forEach(([name, desc, price]) => {
@@ -412,7 +473,7 @@ DATA.forEach(cat => {
       <div class="item-row">
         <span class="item-name">${escapeHtml(name)}</span>
         <span class="leader"></span>
-        <span class="item-price">${price} &euro;</span>
+        <span class="item-price" style="--item-price-color:${cat.color}">${price} &euro;</span>
       </div>
       ${desc ? `<div class="item-desc">${escapeHtml(desc)}</div>` : ''}
     `;
@@ -422,6 +483,7 @@ DATA.forEach(cat => {
   if (cat.note){
     const note = document.createElement('div');
     note.className = 'cat-note';
+    note.style.borderLeftColor = cat.color;
     note.textContent = cat.note;
     sec.appendChild(note);
   }
